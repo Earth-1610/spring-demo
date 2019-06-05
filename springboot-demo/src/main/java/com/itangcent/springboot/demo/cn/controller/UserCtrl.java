@@ -1,14 +1,14 @@
 package com.itangcent.springboot.demo.cn.controller;
 
-import com.itangcent.springboot.demo.cn.model.UserInfo;
 import com.itangcent.springboot.demo.cn.dto.Result;
+import com.itangcent.springboot.demo.cn.model.UserInfo;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * 用户相关
  */
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "user")
 public class UserCtrl {
 
     /**
@@ -19,6 +19,7 @@ public class UserCtrl {
         return "hello world";
     }
 
+
     /**
      * 更新用户名
      *
@@ -27,9 +28,11 @@ public class UserCtrl {
      * @deprecated 改用{@link #update(UserInfo)}
      */
     @RequestMapping(value = "/set", method = RequestMethod.PUT)
-    public Result<UserInfo> set(Long id, String newName) {
+    public Object set(Long id, String newName) {
 
         UserInfo userInfo = new UserInfo();
+
+        
         userInfo.setId(id);
         userInfo.setName(newName);
         userInfo.setAge(45);
@@ -37,6 +40,7 @@ public class UserCtrl {
     }
 
     /**
+     *
      * 获取用户信息
      *
      * @param id 用户id
@@ -61,7 +65,7 @@ public class UserCtrl {
     /**
      * 更新用户信息
      */
-    @PutMapping("/update")
+    @PutMapping("update")
     public Result<UserInfo> update(@ModelAttribute UserInfo userInfo) {
         return Result.success(userInfo);
     }
