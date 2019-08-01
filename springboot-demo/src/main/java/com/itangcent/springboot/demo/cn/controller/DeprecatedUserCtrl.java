@@ -7,22 +7,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 
 /**
- * 用户相关
+ * 用户相关(已废弃)
  *
  * @module user
  */
+@Deprecated
 @RestController
-@RequestMapping(value = "user")
-public class UserCtrl {
+@RequestMapping(value = "/user/deprecated")
+public class DeprecatedUserCtrl {
 
     /**
      * 打个招呼
      */
+    @Deprecated
     @RequestMapping(value = "/index")
     public String greeting() {
         return "hello world";
     }
-
 
     /**
      * 更新用户名
@@ -31,12 +32,10 @@ public class UserCtrl {
      * @param newName 新的用户名
      * @deprecated 改用{@link #update(UserInfo)}
      */
+    @Deprecated
     @RequestMapping(value = "/set", method = RequestMethod.PUT)
     public Object set(Long id, String newName) {
-
         UserInfo userInfo = new UserInfo();
-
-        
         userInfo.setId(id);
         userInfo.setName(newName);
         userInfo.setAge(45);
@@ -44,12 +43,10 @@ public class UserCtrl {
     }
 
     /**
-     *
      * 获取用户信息
      *
      * @param id 用户id
      */
-    @Deprecated
     @GetMapping("/get/{id}")
     public Result<UserInfo> get(@PathVariable("id") Long id) {
         UserInfo userInfo = new UserInfo();

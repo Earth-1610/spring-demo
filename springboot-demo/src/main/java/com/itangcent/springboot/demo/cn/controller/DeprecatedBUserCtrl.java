@@ -7,22 +7,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 
 /**
- * 用户相关
+ * 用户相关(已废弃)
  *
  * @module user
  */
+@Deprecated
 @RestController
-@RequestMapping(value = "user")
-public class UserCtrl {
+@RequestMapping(value = "/user/deprecated/b")
+public class DeprecatedBUserCtrl {
 
     /**
      * 打个招呼
      */
+    @Deprecated
     @RequestMapping(value = "/index")
     public String greeting() {
         return "hello world";
     }
-
 
     /**
      * 更新用户名
@@ -31,12 +32,10 @@ public class UserCtrl {
      * @param newName 新的用户名
      * @deprecated 改用{@link #update(UserInfo)}
      */
+    @Deprecated
     @RequestMapping(value = "/set", method = RequestMethod.PUT)
     public Object set(Long id, String newName) {
-
         UserInfo userInfo = new UserInfo();
-
-        
         userInfo.setId(id);
         userInfo.setName(newName);
         userInfo.setAge(45);
@@ -44,7 +43,6 @@ public class UserCtrl {
     }
 
     /**
-     *
      * 获取用户信息
      *
      * @param id 用户id
@@ -62,6 +60,7 @@ public class UserCtrl {
     /**
      * 增加新用户
      */
+    @Deprecated
     @PostMapping("/add")
     public Result<UserInfo> add(@RequestBody UserInfo userInfo) {
         return Result.success(userInfo);
@@ -70,6 +69,7 @@ public class UserCtrl {
     /**
      * 更新用户信息
      */
+    @Deprecated
     @PutMapping("update")
     public Result<UserInfo> update(@ModelAttribute UserInfo userInfo) {
         return Result.success(userInfo);
@@ -78,6 +78,7 @@ public class UserCtrl {
     /**
      * 获取用户列表
      */
+    @Deprecated
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public Result list() {
         UserInfo userInfo = new UserInfo();
@@ -92,6 +93,7 @@ public class UserCtrl {
      *
      * @param id 用户id
      */
+    @Deprecated
     @GetMapping("/get/{id}")
     public Result delete(@PathVariable("id") Long id) {
         UserInfo userInfo = new UserInfo();

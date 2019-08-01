@@ -21,6 +21,8 @@ public class EntityCtrl {
 
     /**
      * 测试ResponseEntity简单对象
+     *
+     * @public
      */
     @RequestMapping("/int")
     public ResponseEntity<Integer> intInEntity(
@@ -31,6 +33,8 @@ public class EntityCtrl {
 
     /**
      * 测试ResponseEntity复合对象
+     *
+     * @public
      */
     @RequestMapping("/double")
     public ResponseEntity<Result<Double>> doubleInEntity(
