@@ -89,7 +89,7 @@ public class DeprecatedUserCtrl {
      *
      * @param id 用户id
      */
-    @GetMapping("/get/{id}")
+    @DeleteMapping("/{id}")
     public Result delete(@PathVariable("id") Long id) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(id);

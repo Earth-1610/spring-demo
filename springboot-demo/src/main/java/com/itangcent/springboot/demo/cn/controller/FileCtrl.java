@@ -33,4 +33,15 @@ public class FileCtrl {
                               @RequestParam(name = "profileImg") MultipartFile profileImg) {
         return Result.success("保存成功");
     }
+
+    /**
+     * 试试上传多个头像
+     *
+     * @undone
+     */
+    @PostMapping("/add3")
+    public Result<String> add(UserInfo userInfo,
+                              @RequestParam(name = "profileImg") MultipartFile[] profileImgs) {
+        return Result.success("保存成功");
+    }
 }

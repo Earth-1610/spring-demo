@@ -29,14 +29,18 @@ public class UserCtrl {
      *
      * @param id      用户id
      * @param newName 新的用户名
+     * @param slogon  个人签名
      * @deprecated 改用{@link #update(UserInfo)}
      */
     @RequestMapping(value = "/set", method = RequestMethod.PUT)
-    public Object set(Long id, String newName) {
+    public Object set(long id,
+                      @RequestParam String newName,
+                      @RequestParam(required = false, defaultValue = "haha") String slogon,
+                      @RequestParam(required = false, defaultValue = "10") long times) {
 
         UserInfo userInfo = new UserInfo();
 
-        
+
         userInfo.setId(id);
         userInfo.setName(newName);
         userInfo.setAge(45);
@@ -44,7 +48,6 @@ public class UserCtrl {
     }
 
     /**
-     *
      * 获取用户信息
      *
      * @param id 用户id
@@ -92,7 +95,7 @@ public class UserCtrl {
      *
      * @param id 用户id
      */
-    @GetMapping("/get/{id}")
+    @DeleteMapping("/{id}")
     public Result delete(@PathVariable("id") Long id) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(id);

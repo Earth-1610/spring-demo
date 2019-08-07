@@ -3,6 +3,7 @@ package com.itangcent.springboot.demo.cn.controller;
 
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,18 @@ public class TestCtrl {
     public String header(
             @RequestHeader("token") String token) {
         return token;
+    }
+
+    /**
+     * 测试数组参数
+     *
+     * @param strings 字符串参数
+     * @param ints    整型参数
+     */
+    @RequestMapping("/arrays")
+    public String header(@RequestParam(name = "string") String[] strings,
+                         @RequestParam(name = "int") int[] ints) {
+        return "ok";
     }
 
     /**
