@@ -9,6 +9,8 @@ import com.itangcent.common.model.Header
 import com.itangcent.common.model.Request
 import com.itangcent.idea.plugin.api.export.AbstractClassExporter
 import com.itangcent.idea.plugin.api.export.ClassExportRuleKeys
+import com.itangcent.idea.plugin.api.export.yapi.YapiClassExportRuleKeys
+import com.itangcent.idea.plugin.api.export.yapi.YapiRequestKitKt
 import com.itangcent.idea.plugin.script.ActionExt
 import com.itangcent.idea.plugin.utils.KtHelper
 import com.itangcent.idea.plugin.utils.SpringClassName
@@ -18,16 +20,18 @@ import com.itangcent.intellij.psi.PsiAnnotationUtils
 import com.itangcent.intellij.util.KV
 import org.apache.commons.lang3.StringUtils
 
-class MarkdownExportActionExt implements ActionExt {
+import java.util.stream.Collectors
+import java.util.stream.Stream
+
+class YapiExportActionExt implements ActionExt {
 
     void init(ActionContext.ActionContextBuilder builder) {
-
-        builder.bindInstance("file.save.default", "custom.ext.easy-api.md")                                 \
 
         builder.bind(ClassExporter.class, KtHelper.INSTANCE.ktFunction({
             it.to(CustomClassExporter.class).in(com.google.inject.Singleton.class)
             return null
         }))
+
     }
 
     static class CustomClassExporter extends AbstractClassExporter {
@@ -228,7 +232,22 @@ class MarkdownExportActionExt implements ActionExt {
             request.method = httpMethod
 
             String httpPath = contractPath(basePath, findHttpPath(requestMapping))
-            requestHelper.setPath(request, httpPath)
+            requestHelper.setPath(request, "custom/" + httpPath)
+        }
+
+        void processCompleted(PsiMethod method, Request request, RequestHelper requestHelper) {
+            super.processCompleted(method, request, requestHelper)
+
+            String tags = ruleComputer.computer(YapiClassExportRuleKeys.TAG, method)
+            if (StringUtils.isNotBlank(tags)) {
+                YapiRequestKitKt.setTags(request, Stream.of(tags.split("\n"))
+                        .map { it.trim() }
+                        .filter { StringUtils.isNotBlank(it) }
+                        .collect(Collectors.toList()))
+            }
+
+            String status = ruleComputer.computer(YapiClassExportRuleKeys.STATUS, method)
+            YapiRequestKitKt.setStatus(request, status)
         }
 
         private final String findHttpPath(PsiAnnotation requestMappingAnn) {
