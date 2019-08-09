@@ -232,7 +232,7 @@ class YapiExportActionExt implements ActionExt {
             request.method = httpMethod
 
             String httpPath = contractPath(basePath, findHttpPath(requestMapping))
-            requestHelper.setPath(request, "custom/" + httpPath)
+            requestHelper.setPath(request, httpPath)
         }
 
         void processCompleted(PsiMethod method, Request request, RequestHelper requestHelper) {
