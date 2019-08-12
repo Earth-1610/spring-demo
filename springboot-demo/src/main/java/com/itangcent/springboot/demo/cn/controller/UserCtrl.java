@@ -1,6 +1,7 @@
 package com.itangcent.springboot.demo.cn.controller;
 
 import com.itangcent.springboot.demo.cn.dto.Result;
+import com.itangcent.springboot.demo.cn.dto.IResult;
 import com.itangcent.springboot.demo.cn.model.UserInfo;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,7 +55,7 @@ public class UserCtrl {
      */
     @Deprecated
     @GetMapping("/get/{id}")
-    public Result<UserInfo> get(@PathVariable("id") Long id) {
+    public IResult get(@PathVariable("id") Long id) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(id);
         userInfo.setName("Tony Stark");
@@ -66,7 +67,7 @@ public class UserCtrl {
      * 增加新用户
      */
     @PostMapping("/add")
-    public Result<UserInfo> add(@RequestBody UserInfo userInfo) {
+    public IResult add(@RequestBody UserInfo userInfo) {
         return Result.success(userInfo);
     }
 
@@ -74,7 +75,7 @@ public class UserCtrl {
      * 更新用户信息
      */
     @PutMapping("update")
-    public Result<UserInfo> update(@ModelAttribute UserInfo userInfo) {
+    public IResult update(@ModelAttribute UserInfo userInfo) {
         return Result.success(userInfo);
     }
 
@@ -82,7 +83,7 @@ public class UserCtrl {
      * 获取用户列表
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Result list() {
+    public IResult list() {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(1l);
         userInfo.setName("Tom");
@@ -96,7 +97,7 @@ public class UserCtrl {
      * @param id 用户id
      */
     @DeleteMapping("/{id}")
-    public Result delete(@PathVariable("id") Long id) {
+    public IResult delete(@PathVariable("id") Long id) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(id);
         userInfo.setName("Tony Stark");

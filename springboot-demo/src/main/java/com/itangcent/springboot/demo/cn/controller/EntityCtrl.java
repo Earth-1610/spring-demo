@@ -2,6 +2,7 @@ package com.itangcent.springboot.demo.cn.controller;
 
 
 import com.itangcent.springboot.demo.cn.dto.Result;
+import com.itangcent.springboot.demo.cn.dto.IResult;
 import com.itangcent.springboot.demo.cn.model.UserInfo;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.RequestEntity;
@@ -37,7 +38,7 @@ public class EntityCtrl {
      * @public
      */
     @RequestMapping("/double")
-    public ResponseEntity<Result<Double>> doubleInEntity(
+    public ResponseEntity<IResult> doubleInEntity(
             @RequestHeader("token") String token,
             @RequestBody RequestEntity<UserInfo> requestEntity) {
         return ResponseEntity.ok(Result.success(65536.0));
@@ -47,7 +48,7 @@ public class EntityCtrl {
      * 测试HttpEntity
      */
     @RequestMapping("/user")
-    public HttpEntity<Result<UserInfo>> userInEntity(
+    public HttpEntity<IResult> userInEntity(
             @RequestHeader("token") String token) {
         UserInfo userInfo = new UserInfo();
         userInfo.setAge(18);

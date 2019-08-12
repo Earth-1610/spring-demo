@@ -1,13 +1,16 @@
 package com.itangcent.springboot.demo.cn.controller;
 
 
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.itangcent.springboot.demo.cn.dto.IResult;
+import com.itangcent.springboot.demo.cn.dto.Result;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -65,5 +68,22 @@ public class TestCtrl {
     @RequestMapping("/httpServletResponse")
     public String response(HttpServletResponse httpServletResponse) {
         return "javax.servlet.http.HttpServletResponse";
+    }
+
+
+    /**
+     * 推断包含集合的响应
+     */
+    @RequestMapping(value = "/interWithCollection", method = RequestMethod.POST)
+    public IResult interWithCollection(@PathVariable("id") Long id) {
+        List<Map> list = new LinkedList<>();
+        Map<String, Object> map = new HashMap<>();
+        map.put("key1", "string");//这是个测试的key
+        map.put("key2", 666);//这是个测试的666
+        Map<String, Object> value3 = new HashMap<>();
+        value3.put("subKey", "string");//这是个测试的子对象的key
+        map.put("key3", value3);//这是个测试的子对象
+        list.add(map);
+        return Result.success(list);
     }
 }

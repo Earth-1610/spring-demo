@@ -1,6 +1,7 @@
 package com.itangcent.springboot.demo.cn.controller;
 
 import com.itangcent.springboot.demo.cn.dto.Result;
+import com.itangcent.springboot.demo.cn.dto.IResult;
 import com.itangcent.springboot.demo.cn.dto.UserDto;
 import com.itangcent.springboot.demo.cn.model.UserInfo;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class FileCtrl {
      * 增加新用户(上传头像)
      */
     @PostMapping("/add")
-    public Result<String> add(@ModelAttribute UserDto userDto) {
+    public IResult add(@ModelAttribute UserDto userDto) {
         return Result.success("保存成功");
     }
 
@@ -29,8 +30,8 @@ public class FileCtrl {
      * @undone
      */
     @PostMapping("/add2")
-    public Result<String> add(UserInfo userInfo,
-                              @RequestParam(name = "profileImg") MultipartFile profileImg) {
+    public IResult add(UserInfo userInfo,
+                       @RequestParam(name = "profileImg") MultipartFile profileImg) {
         return Result.success("保存成功");
     }
 
@@ -40,8 +41,8 @@ public class FileCtrl {
      * @undone
      */
     @PostMapping("/add3")
-    public Result<String> add(UserInfo userInfo,
-                              @RequestParam(name = "profileImg") MultipartFile[] profileImgs) {
+    public IResult add(UserInfo userInfo,
+                       @RequestParam(name = "profileImg") MultipartFile[] profileImgs) {
         return Result.success("保存成功");
     }
 }

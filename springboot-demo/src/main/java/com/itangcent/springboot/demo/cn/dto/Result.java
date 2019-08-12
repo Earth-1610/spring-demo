@@ -1,6 +1,6 @@
 package com.itangcent.springboot.demo.cn.dto;
 
-public class Result<T> {
+public class Result<T> implements IResult {
 
     private Integer code;//响应码
 
@@ -17,6 +17,7 @@ public class Result<T> {
         this.data = data;
     }
 
+    @Override
     public Integer getCode() {
         return code;
     }
@@ -25,6 +26,7 @@ public class Result<T> {
         this.code = code;
     }
 
+    @Override
     public String getMsg() {
         return msg;
     }
@@ -41,7 +43,7 @@ public class Result<T> {
         this.data = data;
     }
 
-    public static <T> Result<T> success(T data) {
+    public static <T> IResult success(T data) {
         return new Result<>(0, "success", data);
     }
 }
