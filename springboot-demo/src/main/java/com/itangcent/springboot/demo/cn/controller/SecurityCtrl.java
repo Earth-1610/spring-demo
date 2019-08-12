@@ -2,7 +2,6 @@ package com.itangcent.springboot.demo.cn.controller;
 
 
 import com.itangcent.springboot.demo.cn.model.TestJsonFieldBean;
-import com.itangcent.springboot.demo.cn.model.TestJsonIgnoreBean;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

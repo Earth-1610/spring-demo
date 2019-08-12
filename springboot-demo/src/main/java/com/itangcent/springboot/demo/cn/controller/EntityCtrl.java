@@ -1,8 +1,8 @@
 package com.itangcent.springboot.demo.cn.controller;
 
 
-import com.itangcent.springboot.demo.cn.dto.Result;
 import com.itangcent.springboot.demo.cn.dto.IResult;
+import com.itangcent.springboot.demo.cn.dto.Result;
 import com.itangcent.springboot.demo.cn.model.UserInfo;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.RequestEntity;

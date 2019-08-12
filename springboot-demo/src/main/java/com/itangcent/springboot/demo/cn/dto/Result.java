@@ -17,6 +17,10 @@ public class Result<T> implements IResult {
         this.data = data;
     }
 
+    public static <T> IResult success(T data) {
+        return new Result<>(0, "success", data);
+    }
+
     @Override
     public Integer getCode() {
         return code;
@@ -41,9 +45,5 @@ public class Result<T> implements IResult {
 
     public void setData(T data) {
         this.data = data;
-    }
-
-    public static <T> IResult success(T data) {
-        return new Result<>(0, "success", data);
     }
 }
