@@ -7,6 +7,11 @@ public class UserInfo {
 
     private Long id;//用户id
 
+    /**
+     * @see com.itangcent.springboot.demo.cn.constant.UserType
+     */
+    private int type;//用户类型
+
     @NotBlank
     private String name;//用户名
 
@@ -25,6 +30,14 @@ public class UserInfo {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public String getName() {

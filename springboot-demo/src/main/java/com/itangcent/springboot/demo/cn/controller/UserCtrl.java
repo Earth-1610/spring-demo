@@ -67,7 +67,7 @@ public class UserCtrl {
      * 增加新用户
      */
     @PostMapping("/add")
-    public IResult add(@RequestBody UserInfo userInfo) {
+    public Result<UserInfo > add(@RequestBody UserInfo userInfo) {
         return Result.success(userInfo);
     }
 
@@ -97,7 +97,7 @@ public class UserCtrl {
      * @param id 用户id
      */
     @DeleteMapping("/{id}")
-    public IResult delete(@PathVariable("id") Long id) {
+    public Object delete(@PathVariable("id") Long id) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(id);
         userInfo.setName("Tony Stark");
