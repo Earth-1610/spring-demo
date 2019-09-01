@@ -2,12 +2,12 @@ import com.intellij.psi.*
 import com.intellij.psi.PsiModifierListOwner
 import com.intellij.psi.util.PsiTypesUtil
 import com.itangcent.common.constant.HttpMethod
-import com.itangcent.common.exporter.ClassExporter
+import com.itangcent.idea.plugin.api.export.ClassExporter
 import com.itangcent.common.exporter.RequestHelper
 import com.itangcent.common.exporter.RequestHelperKt
 import com.itangcent.common.model.Header
 import com.itangcent.common.model.Request
-import com.itangcent.idea.plugin.api.export.AbstractClassExporter
+import com.itangcent.idea.plugin.api.export.AbstractRequestClassExporter
 import com.itangcent.idea.plugin.api.export.ClassExportRuleKeys
 import com.itangcent.idea.plugin.script.ActionExt
 import com.itangcent.idea.plugin.utils.KtHelper
@@ -30,7 +30,7 @@ class MarkdownExportActionExt implements ActionExt {
         }))
     }
 
-    static class CustomClassExporter extends AbstractClassExporter {
+    static class CustomClassExporter extends AbstractRequestClassExporter {
 
         void processClass(PsiClass cls, KV<String, Object> kv) {
             logger.info("process class by ext:" + cls.name)
