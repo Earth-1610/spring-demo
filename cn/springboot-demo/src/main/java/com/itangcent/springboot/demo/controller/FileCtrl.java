@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * ÓÃ»§Ïà¹Ø(¸½¼ÓÎÄ¼ş)
+ * ç”¨æˆ·ç›¸å…³(é™„åŠ æ–‡ä»¶)
  *
  * @module user
  */
@@ -16,33 +16,33 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping(value = "file")
 public class FileCtrl {
     /**
-     * Ôö¼ÓĞÂÓÃ»§(ÉÏ´«Í·Ïñ)
+     * å¢åŠ æ–°ç”¨æˆ·(ä¸Šä¼ å¤´åƒ)
      */
     @PostMapping("/add")
     public IResult add(@ModelAttribute UserDto userDto) {
-        return Result.success("±£´æ³É¹¦");
+        return Result.success("ä¿å­˜æˆåŠŸ");
     }
 
     /**
-     * ÁíÒ»ÖÖÔö¼ÓĞÂÓÃ»§(ÉÏ´«Í·Ïñ)
-     * ÎÄ¼şµ¥¶ÀÒ»¸ö²ÎÊı
+     * å¦ä¸€ç§å¢åŠ æ–°ç”¨æˆ·(ä¸Šä¼ å¤´åƒ)
+     * æ–‡ä»¶å•ç‹¬ä¸€ä¸ªå‚æ•°
      *
      * @undone
      */
     @PostMapping("/add2")
     public IResult add(UserInfo userInfo,
                        @RequestParam(name = "profileImg") MultipartFile profileImg) {
-        return Result.success("±£´æ³É¹¦");
+        return Result.success("ä¿å­˜æˆåŠŸ");
     }
 
     /**
-     * ÊÔÊÔÉÏ´«¶à¸öÍ·Ïñ
+     * è¯•è¯•ä¸Šä¼ å¤šä¸ªå¤´åƒ
      *
      * @undone
      */
     @PostMapping("/add3")
     public IResult add(UserInfo userInfo,
                        @RequestParam(name = "profileImg") MultipartFile[] profileImgs) {
-        return Result.success("±£´æ³É¹¦");
+        return Result.success("ä¿å­˜æˆåŠŸ");
     }
 }
