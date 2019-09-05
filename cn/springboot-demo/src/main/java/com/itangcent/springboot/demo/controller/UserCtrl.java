@@ -67,7 +67,7 @@ public class UserCtrl {
      * 增加新用户
      */
     @PostMapping("/add")
-    public Result<UserInfo > add(@RequestBody UserInfo userInfo) {
+    public Result<UserInfo> add(@RequestBody UserInfo userInfo) {
         return Result.success(userInfo);
     }
 
@@ -81,13 +81,30 @@ public class UserCtrl {
 
     /**
      * 获取用户列表
+     *
+     * @param type 用户类型 {@link com.itangcent.common.constant.UserType}
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public IResult list() {
+    public IResult list(Integer type) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(1l);
         userInfo.setName("Tom");
         userInfo.setAge(25);
+        return Result.success(Collections.singletonList(userInfo));
+    }
+
+    /**
+     * 获取指定类型用户列表
+     *
+     * @param type 用户类型 {@link com.itangcent.common.constant.UserType}
+     */
+    @RequestMapping(value = "/list/{type}", method = RequestMethod.GET)
+    public IResult listTypeInPath(@PathVariable("type") Integer type) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setId(1l);
+        userInfo.setName("Tom");
+        userInfo.setAge(25);
+        userInfo.setType(type);
         return Result.success(Collections.singletonList(userInfo));
     }
 
