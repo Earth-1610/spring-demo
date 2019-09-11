@@ -1,11 +1,10 @@
 package com.itangcent.cn.kotlin.demo.controller
 
+import com.itangcent.cn.kotlin.demo.model.KotlinUser
 import com.itangcent.common.dto.IResult
 import com.itangcent.common.dto.Result
 import com.itangcent.common.model.UserInfo
 import org.springframework.web.bind.annotation.*
-
-import java.util.Collections
 
 /**
  * 用户相关
@@ -13,13 +12,13 @@ import java.util.Collections
  * @module user
  */
 @RestController
-@RequestMapping(value = "user")
+@RequestMapping(value = ["user"])
 class UserCtrl {
 
     /**
      * 打个招呼
      */
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = ["/index"])
     fun greeting(): String {
         return "hello world"
     }
@@ -32,7 +31,7 @@ class UserCtrl {
      * @param newName 新的用户名
      * @param slogon  个人签名
      */
-    @RequestMapping(value = "/set", method = arrayOf(RequestMethod.PUT))
+    @RequestMapping(value = ["/set"], method = [RequestMethod.PUT])
     @Deprecated("改用{@link #update(UserInfo)}")
     operator fun set(id: Long,
                      @RequestParam newName: String,
@@ -67,7 +66,7 @@ class UserCtrl {
      * 增加新用户
      */
     @PostMapping("/add")
-    fun add(@RequestBody userInfo: UserInfo): Result<UserInfo> {
+    fun add(@RequestBody userInfo: KotlinUser): Result<KotlinUser> {
         return Result.success(userInfo)
     }
 
@@ -75,14 +74,14 @@ class UserCtrl {
      * 更新用户信息
      */
     @PutMapping("update")
-    fun update(@ModelAttribute userInfo: UserInfo): IResult {
+    fun update(@ModelAttribute userInfo: KotlinUser): IResult {
         return Result.success(userInfo)
     }
 
     /**
      * 获取用户列表
      */
-    @RequestMapping(value = "/list", method = arrayOf(RequestMethod.GET))
+    @RequestMapping(value = ["/list"], method = [RequestMethod.GET])
     fun list(): IResult {
         val userInfo = UserInfo()
         userInfo.id = 1L
