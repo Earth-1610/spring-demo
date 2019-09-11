@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
  * @test a
  */
 @RestController
-@RequestMapping(value = "/test/json")
+@RequestMapping("/test/json")
 class TestJsonCtrl {
 
     /**

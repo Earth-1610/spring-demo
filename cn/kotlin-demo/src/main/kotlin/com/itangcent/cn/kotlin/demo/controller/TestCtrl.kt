@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse
  * 简单测试相关
  */
 @RestController
-@RequestMapping(value = "/test")
+@RequestMapping(value = ["/test"])
 class TestCtrl {
 
     /**
@@ -70,7 +70,7 @@ class TestCtrl {
     /**
      * 推断包含集合的响应
      */
-    @RequestMapping(value = "/interWithCollection", method = arrayOf(RequestMethod.POST))
+    @RequestMapping(value = ["/interWithCollection"], method = [RequestMethod.POST])
     fun interWithCollection(@PathVariable("id") id: Long?): IResult {
         val list = LinkedList<Map<*, *>>()
         val map = HashMap<String, Any>()
