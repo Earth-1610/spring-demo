@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.itangcent.cn</groupId>
 	<artifactId>kotlin-demo</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>kotlin-demo</name>
 	<description>Demo project for Spring Boot</description>

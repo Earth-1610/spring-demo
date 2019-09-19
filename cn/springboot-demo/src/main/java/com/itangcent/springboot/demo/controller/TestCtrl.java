@@ -70,7 +70,6 @@ public class TestCtrl {
         return "javax.servlet.http.HttpServletResponse";
     }
 
-
     /**
      * 推断包含集合的响应
      */

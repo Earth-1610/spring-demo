@@ -14,25 +14,26 @@ import java.util.Collections
  */
 @Deprecated("")
 @RestController
-@RequestMapping(value = "/user/deprecated")
+@RequestMapping(value = ["/user/deprecated"])
 class DeprecatedUserCtrl {
 
     /**
      * 打个招呼
      */
     @Deprecated("")
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = ["/index"])
     fun greeting(): String {
         return "hello world"
     }
 
     /**
+     *
      * 更新用户名
      *
      * @param id      用户id
      * @param newName 新的用户名
      */
-    @RequestMapping(value = "/set", method = arrayOf(RequestMethod.PUT))
+    @RequestMapping(value = ["/set"], method = [RequestMethod.PUT, RequestMethod.GET])
     @Deprecated("改用{@link #update(UserInfo)}")
     operator fun set(id: Long?, newName: String): Any {
         val userInfo = UserInfo()
@@ -75,7 +76,7 @@ class DeprecatedUserCtrl {
     /**
      * 获取用户列表
      */
-    @RequestMapping(value = "/list", method = arrayOf(RequestMethod.GET))
+    @RequestMapping(value = ["/list"], method = [RequestMethod.GET])
     fun list(): IResult {
         val userInfo = UserInfo()
         userInfo.id = 1L
