@@ -1,0 +1,18 @@
+language: java
+sudo: false # faster builds
+
+matrix:
+  include:
+    - os: linux
+      sudo: required
+      jdk: openjdk8
+
+script:
+  - ./script/package.sh
+
+before_cache:
+  - rm -f  $HOME/.cache/**
+
+cache:
+  directories:
+    - "$HOME/.cache"

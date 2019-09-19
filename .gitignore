@@ -33,3 +33,7 @@ springboot-demo/mvnw\.cmd
 \.easyapi/\.DS_Store
 
 \.DS_Store
+
+cn/common/target/
+
+cn/dubbo-demo/dubbo-client/target/

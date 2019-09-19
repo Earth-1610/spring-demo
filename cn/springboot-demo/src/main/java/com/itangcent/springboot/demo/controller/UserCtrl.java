@@ -24,7 +24,6 @@ public class UserCtrl {
         return "hello world";
     }
 
-
     /**
      * 更新用户名
      *
