@@ -13,5 +13,6 @@
         <module>cn/dubbo-demo/dubbo-client</module>
         <module>cn/kotlin-demo</module>
         <module>cn/springboot-demo</module>
+        <module>cn/springboot-webflux-demo</module>
     </modules>
 </project>
