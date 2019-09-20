@@ -4,6 +4,7 @@ import com.itangcent.common.dto.IResult;
 import com.itangcent.common.dto.Result;
 import com.itangcent.common.model.UserInfo;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.util.Collections;
 
@@ -20,8 +21,8 @@ public class UserCtrl {
      * 打个招呼
      */
     @RequestMapping(value = "/index")
-    public String greeting() {
-        return "hello world";
+    public Mono<String> greeting() {
+        return Mono.just("hello world");
     }
 
     /**
@@ -33,18 +34,16 @@ public class UserCtrl {
      * @deprecated 改用{@link #update(UserInfo)}
      */
     @RequestMapping(value = "/set", method = RequestMethod.PUT)
-    public Object set(long id,
-                      @RequestParam String newName,
-                      @RequestParam(required = false, defaultValue = "haha") String slogon,
-                      @RequestParam(required = false, defaultValue = "10") long times) {
+    public Mono<Object> set(long id,
+                            @RequestParam String newName,
+                            @RequestParam(required = false, defaultValue = "haha") String slogon,
+                            @RequestParam(required = false, defaultValue = "10") long times) {
 
         UserInfo userInfo = new UserInfo();
-
-
         userInfo.setId(id);
         userInfo.setName(newName);
         userInfo.setAge(45);
-        return Result.success(userInfo);
+        return Mono.just(Result.success(userInfo));
     }
 
     /**
@@ -54,28 +53,28 @@ public class UserCtrl {
      */
     @Deprecated
     @GetMapping("/get/{id}")
-    public IResult get(@PathVariable("id") Long id) {
+    public Mono<IResult> get(@PathVariable("id") Long id) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(id);
         userInfo.setName("Tony Stark");
         userInfo.setAge(45);
-        return Result.success(userInfo);
+        return Mono.just(Result.success(userInfo));
     }
 
     /**
      * 增加新用户
      */
     @PostMapping("/add")
-    public Result<UserInfo> add(@RequestBody UserInfo userInfo) {
-        return Result.success(userInfo);
+    public Mono<Result<UserInfo>> add(@RequestBody UserInfo userInfo) {
+        return Mono.just(Result.success(userInfo));
     }
 
     /**
      * 更新用户信息
      */
     @PutMapping("update")
-    public IResult update(@ModelAttribute UserInfo userInfo) {
-        return Result.success(userInfo);
+    public Mono<IResult> update(@ModelAttribute UserInfo userInfo) {
+        return Mono.just(Result.success(userInfo));
     }
 
     /**
@@ -84,12 +83,12 @@ public class UserCtrl {
      * @param type 用户类型 {@link com.itangcent.common.constant.UserType}
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public IResult list(Integer type) {
+    public Mono<IResult> list(Integer type) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(1l);
         userInfo.setName("Tom");
         userInfo.setAge(25);
-        return Result.success(Collections.singletonList(userInfo));
+        return Mono.just(Result.success(Collections.singletonList(userInfo)));
     }
 
     /**
@@ -98,13 +97,13 @@ public class UserCtrl {
      * @param type 用户类型 {@link com.itangcent.common.constant.UserType}
      */
     @RequestMapping(value = "/list/{type}", method = RequestMethod.GET)
-    public IResult listTypeInPath(@PathVariable("type") Integer type) {
+    public Mono<IResult> listTypeInPath(@PathVariable("type") Integer type) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(1l);
         userInfo.setName("Tom");
         userInfo.setAge(25);
         userInfo.setType(type);
-        return Result.success(Collections.singletonList(userInfo));
+        return Mono.just(Result.success(Collections.singletonList(userInfo)));
     }
 
     /**
@@ -113,12 +112,12 @@ public class UserCtrl {
      * @param id 用户id
      */
     @DeleteMapping("/{id}")
-    public Object delete(@PathVariable("id") Long id) {
+    public Mono delete(@PathVariable("id") Long id) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(id);
         userInfo.setName("Tony Stark");
         userInfo.setAge(45);
-        return Result.success(userInfo);
+        return Mono.just(Result.success(userInfo));
     }
 
 }
