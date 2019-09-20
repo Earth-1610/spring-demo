@@ -11,7 +11,7 @@ script:
   - ./script/package.sh
 
 before_cache:
-  - rm -f  $HOME/.cache/**
+  - rm -rf  $HOME/.cache/**
 
 cache:
   directories:
