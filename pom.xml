@@ -14,6 +14,5 @@
         <module>cn/kotlin-demo</module>
         <module>cn/springboot-demo</module>
         <module>cn/springboot-webflux-demo</module>
-        <module>web-function-sample</module>
     </modules>
 </project>
