@@ -8,6 +8,14 @@ public enum UserType {
     int type;
     String desc;
 
+    public int getType() {
+        return type;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
     UserType(int type, String desc) {
         this.type = type;
         this.desc = desc;
