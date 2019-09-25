@@ -14,15 +14,27 @@
  * limitations under the License.
  */
 
-package com.itangcent.springbootwebfluxdemo;
+package com.itangcent.springbootwebfluxdemo.reactive.function;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 public interface PersonRepository {
+
+    Mono<Person> getPerson2(int id);
+
+    Flux<Person> allPeople2();
+
+    Mono<Void> savePerson2(Mono<Person> person);
+
+    Mono<Person> savePersonReturned2(Mono<Person> person);
 
     Person getPerson(int id);
 
     List<Person> allPeople();
 
     void savePerson(Person person);
+
 }

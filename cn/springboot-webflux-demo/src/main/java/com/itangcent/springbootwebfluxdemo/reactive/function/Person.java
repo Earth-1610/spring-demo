@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.itangcent.springbootwebfluxdemo;
+package com.itangcent.springbootwebfluxdemo.reactive.function;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
