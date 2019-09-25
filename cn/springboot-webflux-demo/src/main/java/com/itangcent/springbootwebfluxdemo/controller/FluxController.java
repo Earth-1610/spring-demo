@@ -1,7 +1,7 @@
 package com.itangcent.springbootwebfluxdemo.controller;
 
-import com.itangcent.springbootwebfluxdemo.Person;
-import com.itangcent.springbootwebfluxdemo.PersonHandler;
+import com.itangcent.springbootwebfluxdemo.reactive.function.Person;
+import com.itangcent.springbootwebfluxdemo.reactive.function.PersonHandler;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -12,6 +12,7 @@ import reactor.core.publisher.Mono;
  * @Description:
  */
 @RestController
+@RequestMapping("restful")
 public class FluxController {
 
     private final PersonHandler personHandler;

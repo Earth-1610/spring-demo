@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-package com.itangcent.springbootwebfluxdemo;
+package com.itangcent.springbootwebfluxdemo.reactive.function;
 
-import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +28,6 @@ import java.util.Map;
 /**
  * @author Arjen Poutsma
  */
-@Repository
 public class DummyPersonRepository implements PersonRepository {
 
     private final Map<Integer, Person> people = new HashMap<>();
@@ -35,6 +36,41 @@ public class DummyPersonRepository implements PersonRepository {
         this.people.put(1, new Person("John Doe", 42));
         this.people.put(2, new Person("Jane Doe", 36));
     }
+
+    @Override
+    public Mono<Person> getPerson2(int id) {
+        return Mono.justOrEmpty(this.people.get(id));
+    }
+
+    @Override
+    public Flux<Person> allPeople2() {
+        return Flux.fromIterable(this.people.values());
+    }
+
+    @Override
+    public Mono<Void> savePerson2(Mono<Person> personMono) {
+        Mono<Void> voidMono = personMono.doOnNext(person -> {
+            System.out.println("1:" + LocalTime.now().toString());
+            int id = people.size() + 1;
+            people.put(id, person);
+            System.out.format("Saved %s with id %d%n", person, id);
+        }).then(Mono.empty());
+        System.out.println("2:" + LocalTime.now().toString());
+        return voidMono;
+    }
+
+    @Override
+    public Mono<Person> savePersonReturned2(Mono<Person> personMono) {
+        Mono voidMono = personMono.doOnNext(person -> {
+            System.out.println("1:" + LocalTime.now().toString());
+            int id = people.size() + 1;
+            people.put(id, person);
+            System.out.format("Saved %s with id %d%n", person, id);
+        }).then(personMono);
+        System.out.println("2:" + LocalTime.now().toString());
+        return voidMono;
+    }
+
 
     @Override
     public Person getPerson(int id) {
