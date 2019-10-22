@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping(value = "/test")
-public class TestCtrl {
+public class TestCtrl extends BaseController {
 
     /**
      * 测试RequestHeader

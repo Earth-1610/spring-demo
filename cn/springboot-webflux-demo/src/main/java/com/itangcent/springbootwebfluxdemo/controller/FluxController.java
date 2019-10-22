@@ -26,6 +26,10 @@ public class FluxController {
         return Mono.empty();
     }
 
+    @GetMapping("/single")
+    public Mono<String> single() {
+        return Flux.<String>empty().single("single");
+    }
 
     @PostMapping("/person")
     Mono<Void> create(@RequestBody Person person) {

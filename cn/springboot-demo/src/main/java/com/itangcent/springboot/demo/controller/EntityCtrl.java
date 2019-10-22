@@ -1,7 +1,6 @@
 package com.itangcent.springboot.demo.controller;
 
 
-import com.itangcent.common.dto.IResult;
 import com.itangcent.common.dto.Result;
 import com.itangcent.common.model.UserInfo;
 import org.springframework.http.HttpEntity;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/test/entity")
-public class EntityCtrl {
+public class EntityCtrl extends BaseController {
 
     /**
      * 测试ResponseEntity简单对象
@@ -33,12 +32,22 @@ public class EntityCtrl {
     }
 
     /**
+     * 测试ResponseEntity
+     *
+     * @public
+     */
+    @RequestMapping("/nil")
+    public ResponseEntity nilEntity() {
+        return ResponseEntity.ok("nil");
+    }
+
+    /**
      * 测试ResponseEntity复合对象
      *
      * @public
      */
     @RequestMapping("/double")
-    public ResponseEntity<IResult> doubleInEntity(
+    public ResponseEntity<Result<Double>> doubleInEntity(
             @RequestHeader("token") String token,
             @RequestBody RequestEntity<UserInfo> requestEntity) {
         return ResponseEntity.ok(Result.success(65536.0));
@@ -48,7 +57,7 @@ public class EntityCtrl {
      * 测试HttpEntity
      */
     @RequestMapping("/user")
-    public HttpEntity<IResult> userInEntity(
+    public HttpEntity<Result<UserInfo>> userInEntity(
             @RequestHeader("token") String token) {
         UserInfo userInfo = new UserInfo();
         userInfo.setAge(18);

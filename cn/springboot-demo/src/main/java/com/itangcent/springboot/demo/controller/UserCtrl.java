@@ -14,7 +14,7 @@ import java.util.Collections;
  */
 @RestController
 @RequestMapping(value = "user")
-public class UserCtrl {
+public class UserCtrl extends BaseController {
 
     /**
      * 打个招呼

@@ -20,28 +20,36 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Person {
 
-	private final String name;
+    private String name;
 
-	private final int age;
+    private int age;
 
-	public Person(@JsonProperty("name") String name, @JsonProperty("age") int age) {
-		this.name = name;
-		this.age = age;
-	}
+    public Person(@JsonProperty("name") String name, @JsonProperty("age") int age) {
+        this.name = name;
+        this.age = age;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getAge() {
-		return this.age;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@Override
-	public String toString() {
-		return "Person{" +
-				"name='" + name + '\'' +
-				", age=" + age +
-				'}';
-	}
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
