@@ -2,6 +2,8 @@ package com.itangcent.common.model;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class UserInfo {
 
@@ -23,6 +25,12 @@ public class UserInfo {
      * @deprecated It's a secret
      */
     private Integer sex;
+
+    //生日
+    private LocalDate birthDay;
+
+    //注册时间
+    private LocalDateTime regtime;
 
     public Long getId() {
         return id;
@@ -62,5 +70,21 @@ public class UserInfo {
 
     public void setSex(Integer sex) {
         this.sex = sex;
+    }
+
+    public LocalDate getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(LocalDate birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public LocalDateTime getRegtime() {
+        return regtime;
+    }
+
+    public void setRegtime(LocalDateTime regtime) {
+        this.regtime = regtime;
     }
 }
