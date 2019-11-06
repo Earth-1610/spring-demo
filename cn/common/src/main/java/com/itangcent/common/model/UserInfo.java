@@ -4,8 +4,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.logging.Logger;
 
 public class UserInfo {
+
+    private transient Logger logger;
 
     private Long id;//用户id
 
@@ -31,6 +34,14 @@ public class UserInfo {
 
     //注册时间
     private LocalDateTime regtime;
+
+    public Logger getLogger() {
+        return logger;
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
 
     public Long getId() {
         return id;
