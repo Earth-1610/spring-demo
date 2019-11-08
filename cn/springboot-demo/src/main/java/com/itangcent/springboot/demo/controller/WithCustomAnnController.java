@@ -20,7 +20,7 @@ public class WithCustomAnnController {
      * 忽略自定义注解参数
      * //     * @param userDtoWithEnum 用户Dto与枚举
      *
-     * @param userContent 用户内容
+//     * @param userContent 用户内容（并不想让他出现在文档请求参数中）
      * @return {@link com.itangcent.common.dto.IResult}
      */
     @PostMapping("")
