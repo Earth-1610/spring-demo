@@ -6,14 +6,12 @@ package com.itangcent.springboot.demo;
  * @author qinkangdeid
  * @date 2019/10/30
  */
-
 public class UserContent {
 
     /**
      * userId
      */
     private Integer userId;
-
 
     public UserContent() {
     }
