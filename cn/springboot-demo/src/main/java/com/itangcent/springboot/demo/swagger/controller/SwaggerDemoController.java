@@ -2,6 +2,7 @@ package com.itangcent.springboot.demo.swagger.controller;
 
 import com.itangcent.common.dto.Result;
 import com.itangcent.common.model.UserInfo;
+import com.itangcent.springboot.demo.swagger.dto.SwaggerModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -14,7 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "swagger")
-@Api(value = "这是@Api swagger测试 SwaggerDemoController", tags = "swagger测试 SwaggerDemoController", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@Api(value = "这是@Api swagger测试 SwaggerDemoController",
+        tags = "swagger测试 SwaggerDemoController",
+        produces = MediaType.APPLICATION_JSON_VALUE,
+        consumes = MediaType.APPLICATION_JSON_VALUE)
 public class SwaggerDemoController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
@@ -23,18 +27,24 @@ public class SwaggerDemoController {
         return "hello world";
     }
 
-    @ApiOperation(value = "设置接口", notes = "这是设置接口")
+    @RequestMapping(value = "/model", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    @ApiOperation(value = "model")
+    public SwaggerModel model() {
+        return new SwaggerModel();
+    }
+
+    @ApiOperation(value = "设置接口", notes = "这是设置接口", tags = {"swagger", "test"})
     @RequestMapping(value = "/set", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ApiResponse(code = 300, message = "这是响应", response = UserInfo.class)
     @ApiParam(value = "这是入参id", name = "这是method's name", defaultValue = "1")
     public Object set(
             @ApiParam(value = "这是入参id", name = "这是param's name", defaultValue = "1")
                     long id,
-            @ApiParam(value = "入参新名字",defaultValue = "默认名字")
+            @ApiParam(value = "入参新名字", defaultValue = "默认名字")
             @RequestParam String newName,
-            @ApiParam(value = "入参哈哈哈", required = true,defaultValue = "默认无")
+            @ApiParam(value = "入参哈哈哈", required = true, defaultValue = "默认无")
             @RequestParam(required = false, defaultValue = "haha") String slogon,
-            @ApiParam(value = "入参times",defaultValue = "20")
+            @ApiParam(value = "入参times", defaultValue = "20")
             @RequestParam(required = false, defaultValue = "11")
                     long times) {
 
