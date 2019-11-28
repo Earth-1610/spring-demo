@@ -1,5 +1,8 @@
 package com.itangcent.common.constant;
 
+/**
+ * 用户类型
+ */
 public enum UserType {
     //管理员
     ADMIN(1, "管理员"),
@@ -10,8 +13,9 @@ public enum UserType {
     //游客
     GUEST(3, "游客");
 
-    int type;
-    String desc;
+    private int type;//用户类型
+
+    private String desc;
 
     public int getType() {
         return type;

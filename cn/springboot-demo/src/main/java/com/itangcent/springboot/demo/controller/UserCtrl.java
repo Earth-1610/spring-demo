@@ -1,11 +1,17 @@
 package com.itangcent.springboot.demo.controller;
 
+import com.itangcent.common.annotation.Public;
+import com.itangcent.common.constant.UserType;
 import com.itangcent.common.dto.IResult;
 import com.itangcent.common.dto.Result;
 import com.itangcent.common.model.UserInfo;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 用户相关
@@ -19,6 +25,7 @@ public class UserCtrl extends BaseController {
     /**
      * 打个招呼
      */
+    @Public
     @RequestMapping(value = "/index")
     public String greeting() {
         return "hello world";
@@ -51,6 +58,7 @@ public class UserCtrl extends BaseController {
      * 获取用户信息
      *
      * @param id 用户id
+     * @undone
      */
     @Deprecated
     @GetMapping("/get/{id}")
@@ -120,5 +128,29 @@ public class UserCtrl extends BaseController {
         userInfo.setAge(45);
         return Result.success(userInfo);
     }
+
+
+    /**
+     * 获取当前用户类型
+     *
+     * @return {@link com.itangcent.common.constant.UserTypeConstant}
+     */
+    @GetMapping("/type")
+    public Result<Integer> currUserType() {
+        return Result.success(UserType.values()[new Random(System.currentTimeMillis()).nextInt(UserType.values().length)].getType());
+    }
+
+
+    /**
+     * 获取所有用户类型
+     *
+     * @return {@link com.itangcent.common.constant.UserType#getType()}
+     */
+    @GetMapping("/types")
+    public Result<List<Integer>> types() {
+        final List<Integer> types = Stream.of(UserType.values()).map(UserType::getType).collect(Collectors.toList());
+        return Result.success(types);
+    }
+
 
 }
