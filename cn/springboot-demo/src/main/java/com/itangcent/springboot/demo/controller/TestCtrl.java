@@ -59,6 +59,7 @@ public class TestCtrl extends BaseController {
      */
     @RequestMapping("/httpServletRequest")
     public String request(HttpServletRequest httpServletRequest) {
+        httpServletRequest.getAuthType();
         return "javax.servlet.http.HttpServletRequest";
     }
 
