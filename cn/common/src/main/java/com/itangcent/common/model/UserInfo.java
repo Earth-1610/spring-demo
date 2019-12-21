@@ -14,10 +14,16 @@ public class UserInfo {
      */
     private int type;//用户类型
 
+    /**
+     * @mock tangcent
+     */
     @NotBlank
     private String name;//用户名
 
-    //年龄
+    /**
+     * 年龄
+     * @mock 1${digit}
+     */
     @NotNull
     private Integer age;
 
