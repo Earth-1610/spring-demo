@@ -57,7 +57,7 @@ class UserCtrl {
      */
     @Deprecated("")
     @GetMapping("/get/{id}")
-    operator fun get(@PathVariable("id") id: Long?): IResult {
+    fun get(@PathVariable("id") id: Long?): IResult {
         val userInfo = UserInfo()
         userInfo.id = id
         userInfo.name = "Tony Stark"

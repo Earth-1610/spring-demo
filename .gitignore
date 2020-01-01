@@ -37,3 +37,8 @@ springboot-demo/mvnw\.cmd
 cn/common/target/
 
 cn/dubbo-demo/dubbo-client/target/
+cn/scala-demo/mvnw
+
+cn/scala-demo/mvnw\.cmd
+
+cn/scala-demo/\.mvn/
