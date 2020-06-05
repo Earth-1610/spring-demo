@@ -105,6 +105,7 @@ public class UserCtrl extends BaseController {
      * 获取用户列表
      *
      * @param type 用户类型 {@link com.itangcent.common.constant.UserType}
+     * @prerequest groupA
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public IResult list(Integer type) {
