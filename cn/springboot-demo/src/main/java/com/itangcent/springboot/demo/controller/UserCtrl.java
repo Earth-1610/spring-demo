@@ -34,19 +34,18 @@ public class UserCtrl extends BaseController {
     /**
      * 更新用户名
      *
-     * @param id      用户id
+     * @param id      当前用户id
      * @param newName 新的用户名
      * @param slogon  个人签名
      * @deprecated 改用{@link #update(UserInfo)}
      */
     @RequestMapping(value = "/set", method = RequestMethod.PUT)
-    public Object set(long id,
-                      @RequestParam String newName,
-                      @RequestParam(required = false, defaultValue = "haha") String slogon,
+    public Object set(@CookieValue(value = "currentId", required = false, defaultValue = "123") long id,
+                      String newName,
+                      @RequestParam String slogon,
                       @RequestParam(required = false, defaultValue = "10") long times) {
 
         UserInfo userInfo = new UserInfo();
-
 
         userInfo.setId(id);
         userInfo.setName(newName);
@@ -59,10 +58,26 @@ public class UserCtrl extends BaseController {
      *
      * @param id 用户id
      * @undone
+     * @see {@link #getById(Long)}
      */
     @Deprecated
     @GetMapping("/get/{id}")
     public IResult get(@PathVariable("id") Long id) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setId(id);
+        userInfo.setName("Tony Stark");
+        userInfo.setAge(45);
+        return Result.success(userInfo);
+    }
+
+    /**
+     * 根据用户id获取用户信息
+     *
+     * @param id 用户id
+     * @undone
+     */
+    @GetMapping(value = "/get", params = "id")
+    public IResult getById(@RequestParam("id") Long id) {
         UserInfo userInfo = new UserInfo();
         userInfo.setId(id);
         userInfo.setName("Tony Stark");
@@ -82,7 +97,7 @@ public class UserCtrl extends BaseController {
      * 更新用户信息
      */
     @PutMapping("update")
-    public IResult update(@ModelAttribute UserInfo userInfo) {
+    public IResult update(UserInfo userInfo) {
         return Result.success(userInfo);
     }
 
@@ -94,7 +109,7 @@ public class UserCtrl extends BaseController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public IResult list(Integer type) {
         UserInfo userInfo = new UserInfo();
-        userInfo.setId(1l);
+        userInfo.setId(1L);
         userInfo.setName("Tom");
         userInfo.setAge(25);
         return Result.success(Collections.singletonList(userInfo));
@@ -152,5 +167,28 @@ public class UserCtrl extends BaseController {
         return Result.success(types);
     }
 
+    /**
+     * 更新用户名
+     *
+     * @param id      当前用户id
+     * @param newName 新的用户名
+     * @param slogon  个人签名
+     * @tag a&zs, b, c
+     * @deprecated 改用{@link #update(UserInfo)}
+     */
+    @RequestMapping(value = "/set")
+    public Object setName(@CookieValue(value = "currentId", required = false, defaultValue = "123") long id,
+                          String newName,
+                          @RequestParam(required = false, name = "slogon2") String slogon1,
+                          @RequestParam String slogon
+    ) {
+
+        UserInfo userInfo = new UserInfo();
+
+        userInfo.setId(id);
+        userInfo.setName(newName);
+        userInfo.setAge(45);
+        return Result.success(userInfo);
+    }
 
 }

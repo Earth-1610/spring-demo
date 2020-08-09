@@ -1,3 +1,6 @@
 server:
   servlet:
-      context-path: /kotlin
+    context-path: /kotlin
+spring:
+  profiles:
+    active: @profile.active@

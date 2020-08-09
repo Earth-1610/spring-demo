@@ -17,6 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <scala.version>2.13.1</scala.version>
+        <start-class>com.itangcent.cn.scala.demo.ScalaDemoApplication</start-class>
     </properties>
 
     <dependencies>
