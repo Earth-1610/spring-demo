@@ -17,6 +17,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <start-class>com.itangcent.springboot.demo.SpringbootDemoApplication</start-class>
     </properties>
 
     <dependencies>
