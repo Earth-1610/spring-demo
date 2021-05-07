@@ -86,4 +86,19 @@ public class TestCtrl extends BaseController {
         list.add(map);
         return Result.success(list);
     }
+
+    @RequestMapping("/return/void")
+    public void returnvoid() {
+        return;
+    }
+
+    @RequestMapping("/return/Void")
+    public Void returnVoid() {
+        return null;
+    }
+
+    @RequestMapping("/return/result/Void")
+    public Result<Void> returnResultVoid() {
+        return null;
+    }
 }
