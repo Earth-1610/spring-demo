@@ -2,6 +2,7 @@ package com.itangcent.springboot.demo.controller;
 
 
 import com.itangcent.common.dto.IResult;
+import com.itangcent.common.dto.Node;
 import com.itangcent.common.dto.Result;
 import org.springframework.web.bind.annotation.*;
 
@@ -99,6 +100,11 @@ public class TestCtrl extends BaseController {
 
     @RequestMapping("/return/result/Void")
     public Result<Void> returnResultVoid() {
+        return null;
+    }
+
+    @RequestMapping("/return/node")
+    public Result<Node> returnNode() {
         return null;
     }
 }
