@@ -1,4 +1,7 @@
 # spring-demo
+
+> **DEPRECATED**: This repository is no longer maintained. Please use [web-demo](https://github.com/Earth-1610/web-demo) instead, which is the new demonstration project for web applications using Spring.
+
 demo for spring(mvc&amp;boot)
 
 [![Build Status](https://travis-ci.com/Earth-1610/spring-demo.svg?branch=master)](https://travis-ci.com/Earth-1610/spring-demo)
